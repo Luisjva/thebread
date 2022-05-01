@@ -40,9 +40,9 @@ export default function Our() {
         </p>
 
         <div className="features">
-          {features.map(() => {
+          {features.map((fea, index) => {
             return (
-              <div className="feature">
+              <div key={index} className="feature">
                 <Image
                   width="30px"
                   height="30px"
