@@ -25,13 +25,6 @@ export default function Statistics() {
       </div>
 
       <style jsx>{`
-        .statistics {
-          background: url("/bg.svg");
-          background-size: 80%;
-          background-position: center;
-          background-repeat: no-repeat;
-        }
-
         h2,
         p {
           text-align: center;
