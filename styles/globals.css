@@ -14,3 +14,22 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.responsive {
+  padding: 1rem 2rem;
+}
+
+@media screen and (min-width: 800px) {
+  .responsive {
+    padding: 2rem 10%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .responsive {
+    max-width: 1200px;
+    width: 80%;
+    padding: 2rem 0;
+    margin: auto;
+  }
+}
