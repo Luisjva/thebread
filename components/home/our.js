@@ -87,6 +87,7 @@ export default function Our() {
           padding: 0.45rem 0.6rem;
           transition: 0.3s;
           cursor: default;
+          border-radius: 10px;
         }
 
         .feature:hover {

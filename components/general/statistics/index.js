@@ -34,6 +34,7 @@ export default function Statistics() {
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 1rem;
+          margin: 2rem 0;
         }
 
         @media screen and (min-width: 1000px) {

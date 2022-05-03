@@ -15,6 +15,7 @@ export default function Date({ children, number }) {
           justify-content: center;
           gap: 0.5rem;
           padding: 1.5rem 0.5rem;
+          border-radius: 10px;
         }
 
         h3,

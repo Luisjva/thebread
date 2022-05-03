@@ -20,7 +20,7 @@ export default function Nav() {
 
   return (
     <nav>
-      <div className="responsive">
+      <div>
         <div className="nav__left">
           <Image src="/bread_logo_color.png" height="25px" width="110px" />
         </div>
@@ -45,7 +45,7 @@ export default function Nav() {
             </div>
           </span>
 
-          <span className="nav__btn">
+          <span className="nav__btn nav__cart">
             <Image src="/Cart.svg" height="25px" width="25px" />
           </span>
           <div onClick={() => openMenu()} className="nav__right__btn">
@@ -104,7 +104,6 @@ export default function Nav() {
       </div>
       <style jsx>{`
         nav {
-          padding: 0 1rem;
           position: sticky;
           top: 0;
           height: 3rem;
@@ -120,6 +119,7 @@ export default function Nav() {
           display: flex;
           justify-content: space-between;
           height: 100%;
+          margin: 0 0.5rem;
         }
 
         /*   nav der   */
@@ -127,11 +127,12 @@ export default function Nav() {
           align-items: center;
           display: flex;
           justify-content: flex-end;
-          gap: 1rem;
+          gap: 0.5rem;
         }
 
         .nav__language {
           position: relative;
+          grid-area: language;
         }
 
         .nav__language__div {
@@ -143,7 +144,7 @@ export default function Nav() {
           border-radius: 5px;
           height: auto;
           padding: 0.3rem 0.5rem;
-          transition: 0.3s;
+          transition: 0.5s;
           width: auto;
           background: #0001;
           cursor: pointer;
@@ -153,6 +154,10 @@ export default function Nav() {
 
         .nav__language__div--visible {
           top: 2.8rem;
+        }
+
+        .nav__cart {
+          grid-area: cart;
         }
 
         .nav__right__ul {
@@ -168,8 +173,9 @@ export default function Nav() {
           padding-inline-start: 0;
           position: absolute;
           top: -20rem;
-          transition: 0.3s;
+          transition: 0.5s;
           width: 100%;
+          grid-area: ul;
 
           backdrop-filter: blur(20px);
         }
@@ -183,7 +189,7 @@ export default function Nav() {
           display: flex;
           justify-content: center;
           height: 3rem;
-          transition: 0.3s;
+          transition: 0.5s;
           width: 100vw;
         }
 
@@ -204,7 +210,7 @@ export default function Nav() {
           border-radius: 10px;
           height: 3px;
           position: absolute;
-          transition: 0.3s;
+          transition: 0.5s;
           width: 100%;
         }
 
@@ -243,7 +249,7 @@ export default function Nav() {
           border-radius: 5px;
           height: 2.5rem;
           padding: 0.5rem;
-          transition: 0.3s;
+          transition: 0.5s;
           width: auto;
         }
 
@@ -256,6 +262,9 @@ export default function Nav() {
         @media screen and (min-width: 560px) {
           .nav__right {
             gap: 0rem;
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            grid-template-areas: "ul cart language";
           }
 
           .nav__right__btn {
@@ -284,6 +293,13 @@ export default function Nav() {
             height: 2.5rem;
             width: auto;
             padding: 0.5rem;
+          }
+        }
+
+        @media screen and (min-width: 1350px) {
+          nav > div {
+            max-width: 1300px;
+            margin: 0 auto;
           }
         }
       `}</style>

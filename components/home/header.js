@@ -26,12 +26,10 @@ export default function Header() {
 
   return (
     <header className="responsive">
-      <p>
+      <h1>
         Lorem ipsum dolor sit amet consectetur adipiscing elit sollicitudin eros
         dui, nulla conubia laoreet fringilla ac mattis mi purus tempor iaculis
-        nascetur, interdum auctor nunc quam ligula integer imperdiet duis
-        molestie. Eros rhoncus interdum sed tristique ultricies porttitor
-      </p>
+      </h1>
       <div>
         <Image
           width={width * 0.5 + "px"}
@@ -46,6 +44,11 @@ export default function Header() {
           display: flex;
           flex-direction: column;
           justify-content: center;
+        }
+
+        h1 {
+          text-align: center;
+          font-size: 1.5rem;
         }
 
         @media screen and (min-width: 500px) {
