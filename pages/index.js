@@ -4,6 +4,7 @@ import { colors } from "../utils";
 import Language from "../components/general/language";
 import Statistics from "../components/general/statistics";
 import Our from "../components/home/our";
+import BestProducts from "../components/general/best-products";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <div>
         <Header />
         <Statistics />
+        <BestProducts />
       </div>
       <div className="background__colors">
         <div className="background__divider__up"></div>

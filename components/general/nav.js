@@ -22,7 +22,11 @@ export default function Nav() {
     <nav>
       <div>
         <div className="nav__left">
-          <Image src="/bread_logo_color.png" height="25px" width="110px" />
+          <Link href="/">
+            <a>
+              <Image src="/bread_logo_color.png" height="25px" width="110px" />
+            </a>
+          </Link>
         </div>
         <div className="nav__right">
           <span
@@ -194,7 +198,6 @@ export default function Nav() {
         }
 
         .nav__right__ul li:hover {
-          transform: scale(1.1);
           background: #0001;
         }
 
