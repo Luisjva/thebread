@@ -122,8 +122,8 @@ export default function BestProducts() {
             : "best__products__container best__products__container__pc"
         }
       >
-        {bestProducts.map((food, index) => {
-          return <Product />;
+        {bestProducts.map((product, index) => {
+          return <Product key={index} />;
         })}
       </div>
 
