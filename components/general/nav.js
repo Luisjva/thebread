@@ -197,10 +197,6 @@ export default function Nav() {
           width: 100vw;
         }
 
-        .nav__right__ul li:hover {
-          background: #0001;
-        }
-
         /* nav btn */
         .nav__right__btn {
           cursor: pointer;
@@ -250,15 +246,11 @@ export default function Nav() {
         .nav__btn {
           background: none;
           border-radius: 5px;
+          cursor: pointer;
           height: 2.5rem;
           padding: 0.5rem;
           transition: 0.5s;
           width: auto;
-        }
-
-        .nav__btn:hover {
-          background: #0001;
-          cursor: pointer;
         }
 
         /*   Media querys   */

@@ -1,5 +1,8 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import Link from "next/link";
+
+import { colors } from "../../utils";
 
 export default function Header() {
   const [width, setWidth] = useState(0);
@@ -26,10 +29,17 @@ export default function Header() {
 
   return (
     <header className="responsive">
-      <h1>
-        Lorem ipsum dolor sit amet consectetur adipiscing elit sollicitudin eros
-        dui, nulla conubia laoreet fringilla ac mattis mi purus tempor iaculis
-      </h1>
+      <div className="header__content">
+        <h1>Diseño grafico</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipiscing elit sollicitudin
+          eros dui, nulla conubia laoreet fringilla ac mattis mi purus tempor
+          iaculis nascetur.
+        </p>
+        <Link href="#">
+          <a>Por si es necesario</a>
+        </Link>
+      </div>
       <div>
         <Image
           width={width * 0.5 + "px"}
@@ -46,9 +56,20 @@ export default function Header() {
           justify-content: center;
         }
 
-        h1 {
+        .header__content {
           text-align: center;
-          font-size: 1.5rem;
+          align-items: center;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+
+        a {
+          background: linear-gradient(90deg, ${colors.vino}, ${colors.naranja});
+          border-radius: 10px;
+          color: #fff;
+          padding: 0.5rem 0.6rem;
+          font-weight: 600;
         }
 
         @media screen and (min-width: 500px) {
