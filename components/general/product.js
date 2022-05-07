@@ -1,13 +1,13 @@
 import { colors } from "../../utils";
 import Price from "./price";
 
-export default function Product() {
+export default function Product({ value, fontSize }) {
   return (
     <div className="products">
       <div className="product">
         <div className="product__img"></div>
         <h3>Nombre</h3>
-        <Price />
+        <Price fontSize={1.4} value={10.5} />
       </div>
       <style jsx>{`
         .product {

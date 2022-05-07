@@ -5,6 +5,7 @@ import Language from "../components/general/language";
 import Statistics from "../components/general/statistics";
 import Our from "../components/home/our";
 import BestProducts from "../components/general/best-products";
+import Packs from "../components/general/packs";
 
 export default function Home() {
   return (
@@ -18,6 +19,9 @@ export default function Home() {
         <div className="background__divider__up"></div>
         <Our />
         <div className="background__divider__down"></div>
+      </div>
+      <div>
+        <Packs />
       </div>
       <style jsx>{`
         .background__colors {

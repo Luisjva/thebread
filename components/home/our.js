@@ -30,9 +30,9 @@ export default function Our() {
   return (
     <div className="responsive our">
       <div>
-        <h1>
+        <h2>
           <Language text="Why trust us?" texto="¿Por qué nosotros?" />
-        </h1>
+        </h2>
         <p>
           Lorem ipsum dolor sit amet consectetur adipiscing elit sollicitudin
           eros dui, nulla conubia laoreet fringilla ac mattis mi purus tempor
@@ -70,6 +70,7 @@ export default function Our() {
           flex-direction: column;
           justify-content: center;
           gap: 2rem;
+          text-align: center;
         }
 
         .features {
