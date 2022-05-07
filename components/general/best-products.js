@@ -123,7 +123,7 @@ export default function BestProducts() {
         }
       >
         {bestProducts.map((product, index) => {
-          return <Product />;
+          return <Product key={index} />;
         })}
       </div>
 
