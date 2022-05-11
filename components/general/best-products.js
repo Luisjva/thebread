@@ -75,9 +75,10 @@ export default function BestProducts() {
         <Language text="Best products" texto="Mejores productos" />
       </h2>
 
-      <p>
-        Manolo, cual de los dos te gusta mas, o si tienes una idea de uno
-        diferente o union de caracteristicas de ambos dime flaco
+      <p className="best__container__text">
+        Lorem ipsum dolor sit amet consectetur adipiscing elit sollicitudin eros
+        dui, nulla conubia laoreet fringilla ac mattis mi purus tempor iaculis
+        nascetur.
       </p>
 
       <div
@@ -135,6 +136,13 @@ export default function BestProducts() {
 
         h2 {
           text-align: center;
+        }
+
+        .best__container__text {
+          margin: auto;
+          text-align: center;
+          width: 80%;
+          margin-bottom: 2rem;
         }
 
         .best__products__container {

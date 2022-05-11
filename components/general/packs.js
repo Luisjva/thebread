@@ -31,15 +31,7 @@ export default function Packs() {
           <ul>
             {products.map((product, index) => {
               return (
-                <li key={index}>
-                  <Image
-                    src="/check.png"
-                    alt="check"
-                    width="30px"
-                    height="30px"
-                  />
-                  <span>Aqui va el nombre del producto incluido</span>
-                </li>
+                <li key={index}>Aqui va el nombre del producto incluido</li>
               );
             })}
           </ul>
@@ -82,18 +74,19 @@ export default function Packs() {
           list-style-type: none;
           text-align: left;
           padding-inline-start: 0;
-          padding: 0 40px 1rem 40px;
+          padding: 0;
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 2px;
+          background: ${colors.blanco};
+          margin-bottom: 2rem;
         }
 
         .pack li {
-          align-items: start;
-          display: grid;
-          grid-template-columns: auto 1fr;
-          gap: 1rem;
-        }
-
-        .pack li > span {
-          margin-top: 0.3rem;
+          background: #fff;
+          text-align: center;
+          width: 100%;
+          padding: 0.25rem 0;
         }
 
         .pack a {
@@ -102,6 +95,12 @@ export default function Packs() {
           color: #fff;
           padding: 0.5rem 0.6rem;
           font-weight: 600;
+        }
+
+        @media screen and (min-width: 500px) {
+          .pack ul {
+            margin: 0 30px 2rem 30px;
+          }
         }
       `}</style>
     </div>
