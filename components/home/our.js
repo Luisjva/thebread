@@ -31,7 +31,7 @@ export default function Our() {
     <div className="responsive our">
       <div>
         <h2>
-          <Language text="Why trust us?" texto="¿Por qué nosotros?" />
+          <Language text="Why choose us?" texto="¿Por qué elegirnos?" />
         </h2>
         <p>
           Lorem ipsum dolor sit amet consectetur adipiscing elit sollicitudin

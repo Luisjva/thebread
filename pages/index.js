@@ -5,7 +5,7 @@ import Language from "../components/general/language";
 import Statistics from "../components/general/statistics";
 import Our from "../components/home/our";
 import BestProducts from "../components/general/best-products";
-import Packs from "../components/general/packs";
+import Packs from "../components/general/packs/index";
 
 export default function Home() {
   return (

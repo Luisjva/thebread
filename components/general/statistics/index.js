@@ -5,23 +5,29 @@ export default function Statistics() {
   return (
     <div className="responsive statistics">
       <h2>
-        <Language
-          texto="Siempre tratamos de entender las expectativas de los usuarios"
-          text="We Always Try To Understand Users Expectation"
-        />
+        <Language texto="Estadísticas" text="Statistics" />
       </h2>
       <p>
         https://themes.envytheme.com/startp/
         <br />
-        Lorem ipsum dolor sit amet consectetur adipiscing elit sollicitudin eros
-        dui, nulla conubia laoreet fringilla ac mattis mi purus tempor iaculis
-        nascetur.
+        <Language
+          texto="Hemos trabajado por años con clientes de todo el mundo brindándoles la mejor calidad."
+          text="We have worked for years with clients from all over the world providing them with the best quality."
+        />
       </p>
       <div className="dates">
-        <Date number="1000">Trabajos realizados</Date>
-        <Date number="847">Clientes satisfechos</Date>
-        <Date number="500">Recontrataciones</Date>
-        <Date number="456">Algo mas</Date>
+        <Date number="153">
+          <Language texto="Pedidos Realizados" text="Orders Made" />
+        </Date>
+        <Date number="84">
+          <Language texto="Clientes Felices" text="Happy customers" />
+        </Date>
+        <Date number="12">
+          <Language texto="Opiniones" text="Opinions" />
+        </Date>
+        <Date number="21">
+          <Language texto="Algo mas" text="Anything else" />
+        </Date>
       </div>
 
       <style jsx>{`

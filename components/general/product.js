@@ -16,10 +16,14 @@ export default function Product({ value, fontSize }) {
           border-radius: 15px;
           display: flex;
           flex-direction: column;
+          max-height: 250px;
+          height: auto;
           justify-content: flex-start;
-          width: 200px;
+          margin: auto;
           padding-bottom: 1rem;
-          height: 250px;
+          min-width: 100px;
+          max-width: 200px;
+          width: 100%;
         }
 
         .product__img {
@@ -27,7 +31,7 @@ export default function Product({ value, fontSize }) {
           background-size: cover;
           background-position: center;
           border-radius: 15px 15px 0 0;
-          height: 120px;
+          height: 100px;
           width: 100%;
         }
       `}</style>

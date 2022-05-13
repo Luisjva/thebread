@@ -82,7 +82,7 @@ export default function Nav() {
                 : "nav__right__ul"
             }
           >
-            <Link href="#">
+            <Link href="/store">
               <a>
                 <li onClick={() => openMenu()}>
                   <Language text="Store" texto="Tienda" />

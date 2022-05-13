@@ -18,8 +18,8 @@ export default function BestProducts() {
         navigator.msMaxTouchPoints > 0
     );
 
-    let listFoods = [[], [], [], [], [], [], [], [], [], [], []];
-    setBestProducts(listFoods);
+    let listProducts = [[], [], [], [], [], [], [], [], [], [], []];
+    setBestProducts(listProducts);
   }, []);
 
   const move = (e) => {
@@ -71,61 +71,66 @@ export default function BestProducts() {
 
   return (
     <div className="responsive best__container">
-      <h2>
-        <Language text="Best products" texto="Mejores productos" />
-      </h2>
+      <div className="best__container__describe">
+        <h2>
+          <Language text="Featured Products" texto="Productos Destacados" />
+        </h2>
 
-      <p className="best__container__text">
-        Lorem ipsum dolor sit amet consectetur adipiscing elit sollicitudin eros
-        dui, nulla conubia laoreet fringilla ac mattis mi purus tempor iaculis
-        nascetur.
-      </p>
-
-      <div
-        className={
-          touchScreen
-            ? "best__products__arow__container best__products__arow__container--unseen"
-            : "best__products__arow__container"
-        }
-      >
-        <button
-          style={{ left: 0 }}
-          className={
-            moveSliderLeft
-              ? "best__products__arow"
-              : "best__products__arow best__products__arow--unseen"
-          }
-          onClick={(e) => {
-            move(e);
-          }}
-        >
-          &#60;
-        </button>
-        <button
-          style={{ right: 0 }}
-          className={
-            moveSliderRight
-              ? "best__products__arow"
-              : "best__products__arow best__products__arow--unseen"
-          }
-          onClick={(e) => {
-            move(e);
-          }}
-        >
-          &#62;
-        </button>
+        <p className="best__container__describe__text">
+          <Language
+            text="Discover the most requested by our customers around the world."
+            texto="Descubre lo más pedido por nuestros clientes de todo el mundo."
+          />
+        </p>
       </div>
 
-      <div
-        className={
-          touchScreen
-            ? "best__products__container"
-            : "best__products__container best__products__container__pc"
-        }
-      >
-        {bestProducts.map((product, index) => {
-          return <Product key={index} />;
-        })}
+      <div className="best__container__products">
+        <div
+          className={
+            touchScreen
+              ? "best__products__arow__container best__products__arow__container--unseen"
+              : "best__products__arow__container"
+          }
+        >
+          <button
+            style={{ left: 0 }}
+            className={
+              moveSliderLeft
+                ? "best__products__arow"
+                : "best__products__arow best__products__arow--unseen"
+            }
+            onClick={(e) => {
+              move(e);
+            }}
+          >
+            &#60;
+          </button>
+          <button
+            style={{ right: 0 }}
+            className={
+              moveSliderRight
+                ? "best__products__arow"
+                : "best__products__arow best__products__arow--unseen"
+            }
+            onClick={(e) => {
+              move(e);
+            }}
+          >
+            &#62;
+          </button>
+        </div>
+
+        <div
+          className={
+            touchScreen
+              ? "best__products__container"
+              : "best__products__container best__products__container__pc"
+          }
+        >
+          {bestProducts.map((product, index) => {
+            return <Product key={index} />;
+          })}
+        </div>
       </div>
 
       <style jsx>{`
@@ -138,7 +143,7 @@ export default function BestProducts() {
           text-align: center;
         }
 
-        .best__container__text {
+        .best__container__describe__text {
           margin: auto;
           text-align: center;
           width: 80%;
@@ -147,10 +152,11 @@ export default function BestProducts() {
 
         .best__products__container {
           display: grid;
+          gap: 1rem;
+          grid-auto-columns: 175px;
           grid-auto-flow: column;
           overflow-x: auto;
           overflow-y: hidden;
-          gap: 1rem;
         }
 
         .best__products__container__pc {
@@ -181,6 +187,19 @@ export default function BestProducts() {
 
         .best__products__arow--unseen {
           display: none;
+        }
+
+        @media screen and (min-width: 700px) {
+          .best__container {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            width: 100vw;
+          }
+
+          .best__container__products {
+            max-width: 800px;
+            width: 70vw;
+          }
         }
       `}</style>
     </div>

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 import { colors } from "../../utils";
+import Language from "../general/language";
 
 export default function Header() {
   const [width, setWidth] = useState(0);
@@ -30,14 +31,22 @@ export default function Header() {
   return (
     <header className="responsive">
       <div className="header__content">
-        <h1>Diseño grafico</h1>
+        <h1>
+          <Language
+            texto="Mejora tu Identidad Visual con el mejor Diseño Gráfico"
+            text="Improve your Visual Identity with the best Graphic Design"
+          />
+        </h1>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipiscing elit sollicitudin
-          eros dui, nulla conubia laoreet fringilla ac mattis mi purus tempor
-          iaculis nascetur.
+          <Language
+            texto="Nuestros servicios de Diseño Gráfico Profesional cuenta con precios adaptados a ti."
+            text="Our Professional Graphic Design services have prices adapted to you."
+          />
         </p>
-        <Link href="#">
-          <a>Por si es necesario</a>
+        <Link href="/store">
+          <a>
+            <Language texto="COMPRA AHORA" text="BUY NOW" />
+          </a>
         </Link>
       </div>
       <div>

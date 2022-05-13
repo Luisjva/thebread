@@ -3,7 +3,7 @@ import { colors } from "../../../utils";
 export default function Date({ children, number }) {
   return (
     <div className="date">
-      <h3>{number} K</h3>
+      <h3>{number}</h3>
       <p>{children}</p>
 
       <style jsx>{`
