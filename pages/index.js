@@ -10,7 +10,7 @@ import Packs from "../components/general/packs/index";
 export default function Home() {
   return (
     <>
-      <div>
+      <div className="background__wave">
         <Header />
         <Statistics />
         <BestProducts />
@@ -29,6 +29,13 @@ export default function Home() {
           color: #fff;
           position: relative;
           padding: 100px 1rem;
+        }
+
+        .background__wave {
+          background: url("/wave-background.png");
+          background-size: 100% 90%;
+          background-position: center;
+          background-repeat: no-repeat;
         }
 
         .background__divider__up {

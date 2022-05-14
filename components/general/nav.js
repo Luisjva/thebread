@@ -33,7 +33,11 @@ export default function Nav() {
             onClick={() => openLanguage()}
             className="nav__btn nav__language"
           >
-            <Language text="EN" texto="ES" /> <span>&#709;</span>
+            <Image
+              src={`/languaje-flag-${router.locale == "es" ? "ES" : "EN"}.png`}
+              height="20px"
+              width="20px"
+            />
             <div
               className={
                 language
@@ -43,7 +47,13 @@ export default function Nav() {
             >
               <Link href="/" locale={router.locale == "es" ? "en" : "es"}>
                 <a>
-                  <Language text="ES" texto="EN" />
+                  <Image
+                    src={`/languaje-flag-${
+                      router.locale == "es" ? "EN" : "ES"
+                    }.png`}
+                    height="20px"
+                    width="20px"
+                  />
                 </a>
               </Link>
             </div>

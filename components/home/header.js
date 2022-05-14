@@ -49,7 +49,7 @@ export default function Header() {
           </a>
         </Link>
       </div>
-      <div>
+      <div className="header__img">
         <Image
           width={width * 0.5 + "px"}
           height={width * 0.5 + "px"}
@@ -59,17 +59,21 @@ export default function Header() {
 
       <style jsx>{`
         header {
-          align-items: center;
           display: flex;
           flex-direction: column;
           justify-content: center;
         }
 
         .header__content {
-          text-align: center;
           align-items: center;
           display: flex;
           flex-direction: column;
+          justify-content: center;
+        }
+
+        .header__img {
+          align-items: center;
+          display: flex;
           justify-content: center;
         }
 
@@ -79,6 +83,7 @@ export default function Header() {
           color: #fff;
           padding: 0.5rem 0.6rem;
           font-weight: 600;
+          margin: 1rem;
         }
 
         @media screen and (min-width: 500px) {

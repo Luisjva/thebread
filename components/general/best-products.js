@@ -135,18 +135,10 @@ export default function BestProducts() {
 
       <style jsx>{`
         .best__container {
-          padding: 0.5rem;
           padding-bottom: 1.5rem;
         }
 
-        h2 {
-          text-align: center;
-        }
-
         .best__container__describe__text {
-          margin: auto;
-          text-align: center;
-          width: 80%;
           margin-bottom: 2rem;
         }
 
@@ -173,15 +165,15 @@ export default function BestProducts() {
         }
 
         .best__products__arow {
+          background: none;
           border: none;
           border-radius: 10px;
-          background: #fff;
           cursor: pointer;
           font-size: 1.5rem;
           padding: 0.3em 0.6em;
           position: absolute;
           transition: 0.3s;
-          top: 110px;
+          top: 125px;
           outline: none;
         }
 
@@ -193,12 +185,11 @@ export default function BestProducts() {
           .best__container {
             display: grid;
             grid-template-columns: 1fr auto;
-            width: 100vw;
           }
 
           .best__container__products {
             max-width: 800px;
-            width: 70vw;
+            width: 60vw;
           }
         }
       `}</style>

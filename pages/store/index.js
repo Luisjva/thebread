@@ -18,9 +18,6 @@ const products = [
   [],
   [],
   [],
-  [],
-  [],
-  [],
 ];
 
 export default function Store() {
@@ -28,7 +25,7 @@ export default function Store() {
     <div className="responsive">
       <Packs />
 
-      <h1>Productos</h1>
+      <h2>Productos</h2>
       <div className="products">
         {products.map((product, index) => {
           return <Product key={index} />;
@@ -39,28 +36,28 @@ export default function Store() {
         .products {
           align-items: center;
           display: grid;
-          gap: 1rem;
+          gap: 1.5rem;
           grid-template-columns: 1fr 1fr;
           justify-content: center;
         }
 
-        h1 {
+        h2 {
           text-align: center;
         }
 
-        @media screen and (min-width: 550px) {
+        @media screen and (min-width: 600px) {
           .products {
             grid-template-columns: 1fr 1fr 1fr;
           }
         }
 
-        @media screen and (min-width: 730px) {
+        @media screen and (min-width: 800px) {
           .products {
             grid-template-columns: repeat(4, 1fr);
           }
         }
 
-        @media screen and (min-width: 1100px) {
+        @media screen and (min-width: 1200px) {
           .products {
             grid-template-columns: repeat(5, 1fr);
           }
