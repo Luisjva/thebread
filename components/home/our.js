@@ -31,12 +31,16 @@ export default function Our() {
     <div className="responsive our">
       <div>
         <h2>
-          <Language text="Why choose us?" texto="¿Por qué elegirnos?" />
+          <Language
+            text="You should choose us because..."
+            texto="Debes elegirnos porque..."
+          />
         </h2>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipiscing elit sollicitudin
-          eros dui, nulla conubia laoreet fringilla ac mattis mi purus tempor
-          iaculis nascetur.
+          <Language
+            text="We are an innovative, creative, flexible and friendly brand; we care about customers and their comfort when working with us and stand out from the competition. Let's work together!"
+            texto="Somos una marca innovadora, creativa, flexible y amigable; nos preocupamos por los clientes y su comodidad al trabajar con nosotros y resaltamos entre la competencia. ¡Trabajemos juntos!"
+          />
         </p>
 
         <div className="features">

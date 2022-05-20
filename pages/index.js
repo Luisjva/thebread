@@ -27,14 +27,16 @@ export default function Home() {
         .background__colors {
           background: linear-gradient(90deg, ${colors.vino}, ${colors.naranja});
           color: #fff;
-          position: relative;
+          margin: 3rem 0;
           padding: 100px 1rem;
+          position: relative;
         }
 
         .background__wave {
-          background: url("/wave-background.png");
-          background-size: 100% 90%;
-          background-position: center;
+          background: linear-gradient(#fff7, #fff7),
+            url("/wave-background-1.png");
+          background-size: 70% 90%;
+          background-position: right;
           background-repeat: no-repeat;
         }
 

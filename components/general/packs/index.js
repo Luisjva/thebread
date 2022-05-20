@@ -6,32 +6,30 @@ export default function Packs() {
   return (
     <div className="responsive packs">
       <h2>
-        <Language
-          texto={"Gana con nuestros paquetes"}
-          text={"Earn with our packages"}
-        />
+        <Language texto="Paquetes Destacados" text="Featured Packages" />
       </h2>
 
       <p>
-        Lorem ipsum dolor sit amet consectetur adipiscing elit sollicitudin eros
-        dui, nulla conubia laoreet fringilla ac mattis mi purus tempor iaculis
-        nascetur.
+        <Language
+          texto="Incluímos paquetes de distintas clases para que puedas obtener más cosas a un precio más bajo. ¡No te pierdas esto!"
+          text="We include packages of different classes so you can get more things at a lower price. Don't miss this!"
+        />
       </p>
 
       <div>
         <Pack
-          title="Paquetes de Redes Sociales"
-          description="Para sacar la maximo de tu Instagram, Facebook y Youtube"
+          title="Paquetes para Redes Sociales"
+          description="Dale un toque único a tus RRSS con nuestro servicio."
           textInclude="Disponibles"
           includes={[["Facebook"], ["Instagram"], ["Youtube"]]}
           link={false}
         />
 
         <Pack
-          title="Paquetes de Logos"
-          description="Para que le des la mejor cara a tu marca"
+          title="Paquetes para Logos"
+          description="Resalta sobre tu competencia con nuestros increíbles servicios de Identidad Visual."
           textInclude="Disponibles"
-          includes={[["Logo Basic"], ["Logo Medio"], ["Logo Pro"]]}
+          includes={[["Basic"], ["Estándar"], ["Profesional"]]}
           link={false}
         />
       </div>

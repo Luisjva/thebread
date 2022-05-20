@@ -138,6 +138,10 @@ export default function BestProducts() {
           padding-bottom: 1.5rem;
         }
 
+        .best__container__describe {
+          text-align: center;
+        }
+
         .best__container__describe__text {
           margin-bottom: 2rem;
         }
@@ -185,6 +189,10 @@ export default function BestProducts() {
           .best__container {
             display: grid;
             grid-template-columns: 1fr auto;
+          }
+
+          .best__container__describe {
+            text-align: left;
           }
 
           .best__container__products {

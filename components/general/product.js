@@ -23,23 +23,25 @@ export default function Product({ value, fontSize }) {
         <div className="product__img"></div>
         <h3>Nombre</h3>
         <Price fontSize={1.1} value={10.5} />
-        <button className="product__btn-1">
+        <button className="product__btn">
           <span>Agregar al carrito</span>
         </button>
       </div>
       <style jsx>{`
         .product {
           align-items: center;
-          background: #f3f3f3;
+          background: ${colors.blanco}55;
           border-radius: 10px;
           display: flex;
           flex-direction: column;
           height: auto;
           justify-content: flex-start;
           margin: auto;
-          min-width: 150px;
+          min-width: 100px;
           max-width: 200px;
           width: 100%;
+
+          backdrop-filter: blur(5px);
         }
 
         .product h3 {
@@ -68,11 +70,11 @@ export default function Product({ value, fontSize }) {
           padding: 2px;
         }
 
-        .product__btn-1 {
+        .product__btn {
           background: linear-gradient(90deg, ${colors.vino}, ${colors.naranja});
         }
 
-        .product__btn-1 > span {
+        .product__btn > span {
           background: #f3f3f3;
           border-radius: 8px;
           display: inline-block;
@@ -82,7 +84,7 @@ export default function Product({ value, fontSize }) {
           width: 100%;
         }
 
-        .product__btn-1:hover > span {
+        .product__btn:hover > span {
           background: #fff0;
           color: #fff;
         }

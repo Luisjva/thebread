@@ -62,6 +62,13 @@ export default function Nav() {
           <span className="nav__btn nav__cart">
             <Image src="/Cart.svg" height="25px" width="25px" />
           </span>
+
+          <Link href="/user">
+            <a className="nav__btn nav__user">
+              <Image src="/User.svg" height="25px" width="25px" />
+            </a>
+          </Link>
+
           <div onClick={() => openMenu()} className="nav__right__btn">
             <div
               className={
@@ -118,7 +125,7 @@ export default function Nav() {
       </div>
       <style jsx>{`
         nav {
-          position: sticky;
+          position: fixed;
           top: 0;
           height: 3rem;
           width: 100%;
@@ -172,6 +179,10 @@ export default function Nav() {
 
         .nav__cart {
           grid-area: cart;
+        }
+
+        .nav__user {
+          grid-area: user;
         }
 
         .nav__right__ul {
@@ -269,7 +280,7 @@ export default function Nav() {
             gap: 0rem;
             display: grid;
             grid-template-columns: 1fr auto auto;
-            grid-template-areas: "ul cart language";
+            grid-template-areas: "ul cart user language";
           }
 
           .nav__right__btn {

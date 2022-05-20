@@ -39,8 +39,8 @@ export default function Header() {
         </h1>
         <p>
           <Language
-            texto="Nuestros servicios de Diseño Gráfico Profesional cuenta con precios adaptados a ti."
-            text="Our Professional Graphic Design services have prices adapted to you."
+            texto="Nuestros servicios de Diseño Gráfico Profesional cuentan con precios adaptados a ti, entregándote la mejor calidad al mejor precio."
+            text="Our Professional Graphic Design services have prices adapted to you, giving you the best quality at the best price."
           />
         </p>
         <Link href="/store">

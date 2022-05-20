@@ -11,8 +11,8 @@ export default function Statistics() {
         https://themes.envytheme.com/startp/
         <br />
         <Language
-          texto="Hemos trabajado por años con clientes de todo el mundo brindándoles la mejor calidad."
-          text="We have worked for years with clients from all over the world providing them with the best quality."
+          texto="Hemos trabajado por años con clientes de todo el mundo brindándoles lo mejor en Diseño Gráfico y aquí están las pruebas."
+          text="We have worked for years with clients from all over the world providing them with the best in Graphic Design and here are the proofs."
         />
       </p>
       <div className="dates">
@@ -47,6 +47,7 @@ export default function Statistics() {
         @media screen and (min-width: 1000px) {
           .dates {
             grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: auto;
           }
         }
       `}</style>
