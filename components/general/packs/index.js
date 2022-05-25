@@ -1,8 +1,27 @@
+import { useState, useEffect, useContext } from "react";
+import useSWR from "swr";
+
 import Language from "../language";
 import Pack from "./pack";
-import { colors } from "../../../utils";
+import { PackagesContext } from "../../../pages/_app";
 
 export default function Packs() {
+  const [packs, setPacks] = useState(undefined);
+  const { packages } = useContext(PackagesContext);
+
+  const fetcher = (...args) => fetch(...args).then((res) => res.json());
+  const fetchPaks = useSWR("/api/packs", fetcher);
+
+  useEffect(() => {
+    if (!fetchPaks.error && fetchPaks.data) {
+      if (fetchPaks.data[0] && fetchPaks.data[0].nombre == "error") {
+        setPacks(null);
+      } else {
+        setPacks(fetchPaks.data);
+      }
+    }
+  }, [fetchPaks]);
+
   return (
     <div className="responsive packs">
       <h2>
@@ -17,35 +36,35 @@ export default function Packs() {
       </p>
 
       <div>
-        <Pack
-          title="Paquetes para Redes Sociales"
-          description="Dale un toque único a tus RRSS con nuestro servicio."
-          textInclude="Disponibles"
-          includes={[["Facebook"], ["Instagram"], ["Youtube"]]}
-          link={false}
-        />
+        {packs &&
+          packs.map((pack) => {
+            let includes = [],
+              incluye = [];
 
-        <Pack
-          title="Paquetes para Logos"
-          description="Resalta sobre tu competencia con nuestros increíbles servicios de Identidad Visual."
-          textInclude="Disponibles"
-          includes={[["Basic"], ["Estándar"], ["Profesional"]]}
-          link={false}
-        />
+            packages &&
+              packages.map((packag) => {
+                if (packag.FK_PACKAGE_CATEGORY == pack.ID) {
+                  includes.push(packag.NAME);
+                  incluye.push(packag.NOMBRE);
+                }
+              });
+
+            return (
+              <Pack
+                key={pack.ID}
+                title={pack.NAME}
+                titulo={pack.NOMBRE}
+                description={pack.DESCRIPTION}
+                descripcion={pack.DESCRIPCION}
+                textInclude="Available"
+                textoIncluir="Disponibles"
+                includes={includes}
+                incluye={incluye}
+                link={`/store/packs/${pack.ID}`}
+              />
+            );
+          })}
       </div>
-
-      {/*<Pack
-        title="Facebook"
-        price={96.54}
-        description="Planificación de contenido para tener a tu Facebook brutal"
-        textInclude="Incluye"
-        includes={[
-          ["Planificación de contenido"],
-          ["Publicaciones"],
-          ["Mejora de imagen"],
-        ]}
-        link={"/#"}
-      />*/}
 
       <style jsx>{`
         .packs {

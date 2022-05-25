@@ -125,14 +125,14 @@ export default function Nav() {
       </div>
       <style jsx>{`
         nav {
+          background: #fffa;
+          height: 3rem;
           position: fixed;
           top: 0;
-          height: 3rem;
           width: 100%;
-          background: #fffd;
           z-index: 200;
 
-          backdrop-filter: blur(20px);
+          backdrop-filter: blur(5px);
         }
 
         nav > div {
@@ -187,7 +187,7 @@ export default function Nav() {
 
         .nav__right__ul {
           align-items: center;
-          background: #fffd;
+          background: #fffa;
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -202,7 +202,7 @@ export default function Nav() {
           width: 100%;
           grid-area: ul;
 
-          backdrop-filter: blur(20px);
+          backdrop-filter: blur(5px);
         }
 
         .nav__right__ul--visible {

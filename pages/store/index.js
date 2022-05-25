@@ -1,9 +1,12 @@
 import Packs from "../../components/general/packs/index";
 import Product from "../../components/general/product";
+import { ProductsContext } from "../_app";
 
-const products = [[], [], [], [], [], [], [], [], [], [], [], []];
+import { useContext } from "react";
 
 export default function Store() {
+  const { products } = useContext(ProductsContext);
+
   return (
     <>
       <div className="store__bg-1">
@@ -14,28 +17,21 @@ export default function Store() {
       </div>
       <div className="store__bg-2">
         <div className="products responsive">
-          {products.map((product, index) => {
-            return <Product key={index} />;
-          })}
+          {products &&
+            products.map((product, index) => {
+              return (
+                <Product
+                  key={index}
+                  nombre={product.NOMBRE}
+                  name={product.NAME}
+                  price={product.PRICE}
+                  img={product.PHOTO}
+                />
+              );
+            })}
         </div>
       </div>
       <style jsx>{`
-        .store__bg-1 {
-          background: linear-gradient(#fff7, #fff7),
-            url("/wave-background-4.png");
-          background-position: right;
-          background-size: 70% 90%;
-          background-repeat: no-repeat;
-        }
-
-        .store__bg-2 {
-          background: linear-gradient(#fff7, #fff7),
-            url("/wave-background-5.png");
-          background-position: left;
-          background-size: 80% 90%;
-          background-repeat: no-repeat;
-        }
-
         .products {
           align-items: center;
           display: grid;
@@ -46,6 +42,20 @@ export default function Store() {
 
         h2 {
           text-align: center;
+        }
+
+        .store__bg-1 {
+          background: url("/wave-background-3.png");
+          background-position: right;
+          background-size: 80% 90%;
+          background-repeat: no-repeat;
+        }
+
+        .store__bg-2 {
+          background: url("/wave-background-5.png");
+          background-position: left;
+          background-size: 80% 90%;
+          background-repeat: no-repeat;
         }
 
         @media screen and (min-width: 600px) {

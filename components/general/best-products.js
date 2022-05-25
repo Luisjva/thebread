@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 
 import Language from "./language";
 import Product from "./product";
+import { ProductsContext } from "../../pages/_app";
 
 let containerProducts;
 
@@ -11,16 +12,28 @@ export default function BestProducts() {
   const [moveSliderRight, setMoveSliderRight] = useState(true);
   const [bestProducts, setBestProducts] = useState([]);
 
+  const { products } = useContext(ProductsContext);
+
   useEffect(() => {
     setTouchScreen(
       "ontouchstart" in window ||
         navigator.maxTouchPoints > 0 ||
         navigator.msMaxTouchPoints > 0
     );
-
-    let listProducts = [[], [], [], [], [], [], [], [], [], [], []];
-    setBestProducts(listProducts);
   }, []);
+
+  useEffect(() => {
+    if (products) {
+      let listProducts = [];
+
+      products.map((product) => {
+        if (product.OUTSTANDING === "Y") {
+          listProducts.push(product);
+        }
+      });
+      setBestProducts(listProducts);
+    }
+  }, [products]);
 
   const move = (e) => {
     containerProducts = document.querySelector(".best__products__container");
@@ -128,7 +141,15 @@ export default function BestProducts() {
           }
         >
           {bestProducts.map((product, index) => {
-            return <Product key={index} />;
+            return (
+              <Product
+                key={index}
+                nombre={product.NOMBRE}
+                name={product.NAME}
+                price={product.PRICE}
+                img={product.PHOTO}
+              />
+            );
           })}
         </div>
       </div>

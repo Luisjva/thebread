@@ -6,7 +6,7 @@ const nextConfig = {
     defaultLocale: "es",
   },
   images: {
-    domains: ["localhost"],
+    domains: ["localhost","https://thebreadimg.herokuapp.com"],
   },
 };
 

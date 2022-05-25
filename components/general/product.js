@@ -1,12 +1,16 @@
 import { colors } from "../../utils";
 import Price from "./price";
+import Language from "./language";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
 let content;
 
-export default function Product({ value, fontSize }) {
+export default function Product({ value, fontSize, nombre, name, price, img }) {
   const [width, setWidth] = useState(100);
+
+  const router = useRouter();
 
   useEffect(() => {
     content = document.querySelector(".product");
@@ -21,8 +25,10 @@ export default function Product({ value, fontSize }) {
     <div className="products">
       <div className="product">
         <div className="product__img"></div>
-        <h3>Nombre</h3>
-        <Price fontSize={1.1} value={10.5} />
+        <h3>
+          <Language texto={nombre} text={name} />
+        </h3>
+        <Price fontSize={1.1} value={price} />
         <button className="product__btn">
           <span>Agregar al carrito</span>
         </button>
@@ -52,7 +58,9 @@ export default function Product({ value, fontSize }) {
         }
 
         .product__img {
-          background: url("/七転び八起き.png");
+          background: url(${(document.domain == "localhost"
+            ? `http://localhost:9000`
+            : "https://thebreadimg.herokuapp.com") + `/static${img}`});
           background-size: cover;
           background-position: center;
           border-radius: 10px;

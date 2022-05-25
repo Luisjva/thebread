@@ -5,9 +5,8 @@ const productos = async (req, res) => {
     const { results, error } = await query(
       `SELECT
         *
-      FROM products
-      WHERE VISIBLE = "Y"
-      ORDER BY NAME;`,
+      FROM packages_category
+      WHERE ID = ${req.query.id};`,
       req.headers.host
     );
 

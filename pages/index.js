@@ -1,4 +1,5 @@
-import Header from "../components/home/header";
+import Header from "../components/general/header";
+import Link from "next/link";
 
 import { colors } from "../utils";
 import Language from "../components/general/language";
@@ -11,7 +12,25 @@ export default function Home() {
   return (
     <>
       <div className="background__wave">
-        <Header />
+        <Header img="/bread_monograma_photoshop.png">
+          <h1>
+            <Language
+              texto="Mejora tu Identidad Visual con el mejor Diseño Gráfico"
+              text="Improve your Visual Identity with the best Graphic Design"
+            />
+          </h1>
+          <p>
+            <Language
+              texto="Nuestros servicios de Diseño Gráfico Profesional cuentan con precios adaptados a ti, entregándote la mejor calidad al mejor precio."
+              text="Our Professional Graphic Design services have prices adapted to you, giving you the best quality at the best price."
+            />
+          </p>
+          <Link href="/store">
+            <a>
+              <Language texto="COMPRA AHORA" text="BUY NOW" />
+            </a>
+          </Link>
+        </Header>
         <Statistics />
         <BestProducts />
       </div>
@@ -32,14 +51,6 @@ export default function Home() {
           position: relative;
         }
 
-        .background__wave {
-          background: linear-gradient(#fff7, #fff7),
-            url("/wave-background-1.png");
-          background-size: 70% 90%;
-          background-position: right;
-          background-repeat: no-repeat;
-        }
-
         .background__divider__up {
           background: url("/ola.svg");
           height: 100px;
@@ -57,6 +68,22 @@ export default function Home() {
           bottom: 0;
           width: 100%;
           transform: rotate(180deg);
+        }
+
+        a {
+          background: linear-gradient(90deg, ${colors.vino}, ${colors.naranja});
+          border-radius: 10px;
+          color: #fff;
+          padding: 0.5rem 0.6rem;
+          font-weight: 600;
+          margin: 1rem;
+        }
+
+        .background__wave {
+          background: url("/wave-background-1.png");
+          background-size: 70% 90%;
+          background-position: right;
+          background-repeat: no-repeat;
         }
       `}</style>
     </>

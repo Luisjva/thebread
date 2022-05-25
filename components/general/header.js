@@ -1,11 +1,8 @@
 import Image from "next/image";
+
 import { useEffect, useState } from "react";
-import Link from "next/link";
 
-import { colors } from "../../utils";
-import Language from "../general/language";
-
-export default function Header() {
+export default function Header({ children, img }) {
   const [width, setWidth] = useState(0);
   useEffect(() => {
     if (innerWidth < 500) {
@@ -30,30 +27,12 @@ export default function Header() {
 
   return (
     <header className="responsive">
-      <div className="header__content">
-        <h1>
-          <Language
-            texto="Mejora tu Identidad Visual con el mejor Diseño Gráfico"
-            text="Improve your Visual Identity with the best Graphic Design"
-          />
-        </h1>
-        <p>
-          <Language
-            texto="Nuestros servicios de Diseño Gráfico Profesional cuentan con precios adaptados a ti, entregándote la mejor calidad al mejor precio."
-            text="Our Professional Graphic Design services have prices adapted to you, giving you the best quality at the best price."
-          />
-        </p>
-        <Link href="/store">
-          <a>
-            <Language texto="COMPRA AHORA" text="BUY NOW" />
-          </a>
-        </Link>
-      </div>
+      <div className="header__content">{children}</div>
       <div className="header__img">
         <Image
           width={width * 0.5 + "px"}
           height={width * 0.5 + "px"}
-          src="/bread_monograma_photoshop.png"
+          src={img}
         />
       </div>
 
@@ -75,15 +54,6 @@ export default function Header() {
           align-items: center;
           display: flex;
           justify-content: center;
-        }
-
-        a {
-          background: linear-gradient(90deg, ${colors.vino}, ${colors.naranja});
-          border-radius: 10px;
-          color: #fff;
-          padding: 0.5rem 0.6rem;
-          font-weight: 600;
-          margin: 1rem;
         }
 
         @media screen and (min-width: 500px) {

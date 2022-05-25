@@ -2,11 +2,10 @@ import query from "../../setting/db";
 
 const productos = async (req, res) => {
   try {
-    const { results, error } = await query(
+    let { results, error } = await query(
       `SELECT
         *
-      FROM products
-      WHERE VISIBLE = "Y"
+      FROM packages_category
       ORDER BY NAME;`,
       req.headers.host
     );
