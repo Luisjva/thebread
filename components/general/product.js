@@ -58,9 +58,9 @@ export default function Product({ value, fontSize, nombre, name, price, img }) {
         }
 
         .product__img {
-          background: url(${(document.domain == "localhost"
+          background: url("${(document.domain == "localhost"
             ? `http://localhost:9000`
-            : "https://thebreadimg.herokuapp.com") + `/static${img}`});
+            : "https://thebreadimg.herokuapp.com") + `/static${img}`}");
           background-size: cover;
           background-position: center;
           border-radius: 10px;
