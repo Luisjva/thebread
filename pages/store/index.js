@@ -22,10 +22,12 @@ export default function Store() {
               return (
                 <Product
                   key={index}
+                  id={product.ID}
                   nombre={product.NOMBRE}
                   name={product.NAME}
                   price={product.PRICE}
                   img={product.PHOTO}
+                  newAmount={false}
                 />
               );
             })}

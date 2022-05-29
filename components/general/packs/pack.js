@@ -1,10 +1,13 @@
 import { colors } from "../../../utils";
 import Price from "../price";
 import Language from "../language";
+import { CartContext } from "../../../pages/_app";
 
 import { useRouter } from "next/router";
+import { useContext, useEffect, useState } from "react";
 
 export default function Pack({
+  id,
   title,
   titulo,
   price,
@@ -15,15 +18,71 @@ export default function Pack({
   textInclude,
   textoIncluir,
   link,
+  newAmount,
 }) {
   const router = useRouter();
+
+  const [amountCart, setAmountCart] = useState(0);
+
+  const { cartPacks, setCartPacks } = useContext(CartContext);
 
   const linkOrCart = () => {
     if (link) {
       router.push(link);
     } else {
-      console.log("Carrito");
+      addCart("+");
     }
+  };
+
+  const tourCart = () => {
+    for (let i = 0; i < cartPacks.length; i++) {
+      if (cartPacks[i].id == id) {
+        setAmountCart(cartPacks[i].newAmount);
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (newAmount) {
+      setAmountCart(newAmount);
+    } else {
+      if (cartPacks[0] !== null) {
+        tourCart();
+      } else {
+        setAmountCart(0);
+      }
+    }
+  }, []);
+
+  const addCart = (value) => {
+    let newAmount = amountCart;
+    let newCart;
+    cartPacks == [] ? (newCart = []) : (newCart = cartPacks);
+
+    setCartPacks([null]);
+
+    if (value == "+") {
+      newAmount = newAmount + 1;
+    } else if (newAmount != 0) {
+      newAmount = newAmount - 1;
+    }
+
+    for (let i = 0; i < newCart.length; i++) {
+      if (newCart[i].id == id) {
+        newCart.splice(i, 1);
+      }
+    }
+
+    if (newAmount != 0) {
+      newCart.push({ id, title, titulo, price, includes, incluye, newAmount });
+      setAmountCart(newAmount);
+    } else {
+      setAmountCart(0);
+    }
+    setTimeout(() => {
+      setCartPacks(newCart);
+      console.log(newCart);
+    }, 200);
   };
 
   return (
@@ -48,9 +107,24 @@ export default function Pack({
         })}
       </ul>
 
-      <button onClick={() => linkOrCart()}>
-        {!link ? "Agregar al carrito" : "Ver los paquetes"}
-      </button>
+      {amountCart == 0 ? (
+        <button onClick={() => linkOrCart()}>
+          {!link ? "Agregar al carrito" : "Ver los paquetes"}
+        </button>
+      ) : (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            width: "50%",
+          }}
+        >
+          <button onClick={() => addCart("-")}>-</button>
+          <span>{amountCart}</span>
+          <button onClick={() => addCart("+")}>+</button>
+        </div>
+      )}
       <style jsx>{`
         .pack {
           align-items: center;
@@ -105,6 +179,7 @@ export default function Pack({
           font-weight: 600;
           cursor: pointer;
           margin-top: auto;
+          min-width: 35px;
         }
 
         @media screen and (min-width: 500px) {

@@ -53,6 +53,7 @@ export default function Packs() {
                   return (
                     <Pack
                       key={packag.ID}
+                      id={packag.ID}
                       title={packag.NAME}
                       titulo={packag.NOMBRE}
                       description={packag.DESCRIPTION}

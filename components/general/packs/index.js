@@ -61,6 +61,7 @@ export default function Packs() {
                 includes={includes}
                 incluye={incluye}
                 link={`/store/packs/${pack.ID}`}
+                newAmount={false}
               />
             );
           })}
