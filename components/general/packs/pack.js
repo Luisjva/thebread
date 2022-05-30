@@ -85,6 +85,14 @@ export default function Pack({
     }, 200);
   };
 
+  useEffect(() => {
+    if (cartPacks[0] !== null) {
+      tourCart();
+    } else {
+      setAmountCart(0);
+    }
+  }, [cartPacks]);
+
   return (
     <div className="pack">
       <h3>

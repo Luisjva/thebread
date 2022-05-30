@@ -7,28 +7,33 @@ import { useState, useEffect, useContext } from "react";
 
 let content;
 
-export default function Product({ id, nombre, name, price, img, newAmount }) {
+export default function ProductHorizontal({
+  id,
+  nombre,
+  name,
+  price,
+  img,
+  newAmount,
+}) {
   const [width, setWidth] = useState(100);
   const [amountCart, setAmountCart] = useState(0);
 
   const { cartProducts, setCartProducts } = useContext(CartContext);
 
   const tourCart = () => {
-    let amount = [0];
     for (let i = 0; i < cartProducts.length; i++) {
       if (cartProducts[i].id == id) {
         setAmountCart(cartProducts[i].newAmount);
-        break;
       }
     }
   };
 
   useEffect(() => {
-    content = document.querySelector(".product");
-    setWidth(content.clientWidth);
+    content = document.querySelector(".product__cart");
+    setWidth(content.clientHeight);
     window.addEventListener("resize", () => {
-      content = document.querySelector(".product");
-      setWidth(content.clientWidth);
+      content = document.querySelector(".product__cart");
+      setWidth(content.clientHeight);
     });
 
     /* */
@@ -73,22 +78,16 @@ export default function Product({ id, nombre, name, price, img, newAmount }) {
     }, 200);
   };
 
-  useEffect(() => {
-    if (cartProducts[0] !== null) {
-      tourCart();
-    } else {
-      setAmountCart(0);
-    }
-  }, [cartProducts]);
-
   return (
     <div className="products">
-      <div className="product">
+      <div className="product__cart">
         <div className="product__img"></div>
         <h3>
           <Language texto={nombre} text={name} />
         </h3>
-        <Price fontSize={1.1} value={price} />
+        <div className="product__price">
+          <Price fontSize={1.1} value={price} />
+        </div>
         <div className="product__btn__container">
           {amountCart ? (
             <div className="product__btn__amount">
@@ -108,25 +107,38 @@ export default function Product({ id, nombre, name, price, img, newAmount }) {
         </div>
       </div>
       <style jsx>{`
-        .product {
-          align-items: center;
-          background: ${colors.blanco}55;
+        .product__cart {
+          background: ${colors.blanco}44;
           border-radius: 10px;
-          display: flex;
-          flex-direction: column;
+          display: grid;
+          grid-template-columns: 1fr 2fr;
+          grid-template-areas:
+            "img name"
+            "img price"
+            "img btn";
           height: auto;
           justify-content: flex-start;
           margin: auto;
-          min-width: 100px;
-          max-width: 200px;
+          text-align: left;
           width: 100%;
 
-          backdrop-filter: blur(5px);
+          backdrop-filter: blur(3px);
+        }
+
+        .pack {
+          display: grid;
+          grid-template-columns: 1fr;
+          grid-template-areas:
+            "name"
+            "price"
+            "btn";
+          text-align: center;
         }
 
         .product h3 {
           font-weight: 500;
           font-size: 1.25rem;
+          grid-area: name;
           margin-block-start: 0.75em;
           margin-block-end: 0.5em;
         }
@@ -138,8 +150,14 @@ export default function Product({ id, nombre, name, price, img, newAmount }) {
           background-size: cover;
           background-position: center;
           border-radius: 10px;
+          grid-area: img;
+          margin-right: 1.5rem;
           height: ${width}px;
           width: ${width}px;
+        }
+
+        .product__price {
+          grid-area: price;
         }
 
         .product__btn {
@@ -148,6 +166,7 @@ export default function Product({ id, nombre, name, price, img, newAmount }) {
           font-size: 1rem;
           border: none;
           border-radius: 10px;
+          grid-area: btn;
           margin-top: 0.75rem;
           width: ${width}px;
           padding: 2px;
@@ -176,6 +195,7 @@ export default function Product({ id, nombre, name, price, img, newAmount }) {
           display: flex;
           justify-content: space-between;
           margin-top: 0.75rem;
+          margin: auto;
         }
 
         .product__btn__amount > button {

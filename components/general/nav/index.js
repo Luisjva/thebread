@@ -12,8 +12,7 @@ export default function Nav() {
   const [visible, setVisible] = useState(false);
   const [language, setLanguage] = useState(false);
 
-  const { cartProducts, setCartProducts, cartPacks, setCartPacks } =
-    useContext(CartContext);
+  const { cartProducts, cartPacks } = useContext(CartContext);
 
   const router = useRouter();
 
@@ -31,7 +30,7 @@ export default function Nav() {
 
   return (
     <div className="nav__container">
-      <NavCarrito visible={visible} />
+      <NavCarrito visible={visible} setVisible={setVisible} />
       <ul
         className={
           visible == "ul"
@@ -66,7 +65,7 @@ export default function Nav() {
         <div>
           <div className="nav__left">
             <Link href="/">
-              <a>
+              <a onClick={() => setVisible(false)}>
                 <Image
                   src="/bread_logo_color.png"
                   height="25px"
@@ -77,7 +76,10 @@ export default function Nav() {
           </div>
           <div className="nav__right">
             <span
-              onClick={() => openLanguage()}
+              onClick={() => {
+                openLanguage();
+                setVisible(false);
+              }}
               className="nav__btn nav__language"
             >
               <Image
@@ -199,7 +201,7 @@ export default function Nav() {
           top: 0;
           width: 100%;
           z-index: 200;
-          box-shadow: 2px 2px 10px #0003;
+          box-shadow: 2px 2px 10px #0002;
 
           backdrop-filter: blur(5px);
         }

@@ -1,41 +1,28 @@
-import { colors } from "../../utils";
-import Price from "./price";
-import Language from "./language";
-import { CartContext } from "../../pages/_app";
+import { colors } from "../../../utils";
+import Price from "../price";
+import Language from "../language";
+import { CartContext } from "../../../pages/_app";
 
 import { useState, useEffect, useContext } from "react";
 
-let content;
-
-export default function Product({ id, nombre, name, price, img, newAmount }) {
-  const [width, setWidth] = useState(100);
+export default function PackHorizontal({ id, nombre, name, price, newAmount }) {
   const [amountCart, setAmountCart] = useState(0);
 
-  const { cartProducts, setCartProducts } = useContext(CartContext);
+  const { cartPacks, setCartPacks } = useContext(CartContext);
 
   const tourCart = () => {
-    let amount = [0];
-    for (let i = 0; i < cartProducts.length; i++) {
-      if (cartProducts[i].id == id) {
-        setAmountCart(cartProducts[i].newAmount);
-        break;
+    for (let i = 0; i < cartPacks.length; i++) {
+      if (cartPacks[i].id == id) {
+        setAmountCart(cartPacks[i].newAmount);
       }
     }
   };
 
   useEffect(() => {
-    content = document.querySelector(".product");
-    setWidth(content.clientWidth);
-    window.addEventListener("resize", () => {
-      content = document.querySelector(".product");
-      setWidth(content.clientWidth);
-    });
-
-    /* */
     if (newAmount) {
       setAmountCart(newAmount);
     } else {
-      if (cartProducts[0] !== null) {
+      if (cartPacks[0] !== null) {
         tourCart();
       } else {
         setAmountCart(0);
@@ -46,9 +33,9 @@ export default function Product({ id, nombre, name, price, img, newAmount }) {
   const addCart = (value) => {
     let newAmount = amountCart;
     let newCart;
-    cartProducts == [] ? (newCart = []) : (newCart = cartProducts);
+    cartPacks == [] ? (newCart = []) : (newCart = cartPacks);
 
-    setCartProducts([null]);
+    setCartPacks([null]);
 
     if (value == "+") {
       newAmount = newAmount + 1;
@@ -69,29 +56,20 @@ export default function Product({ id, nombre, name, price, img, newAmount }) {
       setAmountCart(0);
     }
     setTimeout(() => {
-      setCartProducts(newCart);
+      setCartPacks(newCart);
     }, 200);
   };
 
-  useEffect(() => {
-    if (cartProducts[0] !== null) {
-      tourCart();
-    } else {
-      setAmountCart(0);
-    }
-  }, [cartProducts]);
-
   return (
-    <div className="products">
-      <div className="product">
-        <div className="product__img"></div>
-        <h3>
+    <div className="packs">
+      <div className="pack__cart">
+        <h3 className="pack__h3">
           <Language texto={nombre} text={name} />
         </h3>
         <Price fontSize={1.1} value={price} />
-        <div className="product__btn__container">
+        <div className="pack__btn__container">
           {amountCart ? (
-            <div className="product__btn__amount">
+            <div className="pack__btn__amount">
               <button onClick={() => addCart("-")}>
                 <span>-</span>
               </button>
@@ -101,60 +79,50 @@ export default function Product({ id, nombre, name, price, img, newAmount }) {
               </button>
             </div>
           ) : (
-            <button className="product__btn" onClick={() => addCart("+")}>
+            <button className="pack__btn" onClick={() => addCart("+")}>
               <span>Agregar al carrito</span>
             </button>
           )}
         </div>
       </div>
       <style jsx>{`
-        .product {
+        .pack__cart {
           align-items: center;
-          background: ${colors.blanco}55;
+          background: ${colors.blanco}44;
           border-radius: 10px;
+          border: 3px solid ${colors.vino};
           display: flex;
           flex-direction: column;
+          gap: 0.5rem;
           height: auto;
-          justify-content: flex-start;
+          justify-content: center;
           margin: auto;
-          min-width: 100px;
-          max-width: 200px;
+          padding: 0.5rem;
           width: 100%;
 
-          backdrop-filter: blur(5px);
+          backdrop-filter: blur(3px);
         }
 
-        .product h3 {
+        .pack__h3 {
           font-weight: 500;
           font-size: 1.25rem;
-          margin-block-start: 0.75em;
-          margin-block-end: 0.5em;
+          margin-block-start: 0;
+          margin-block-end: 0;
         }
 
-        .product__img {
-          background: url("${(document.domain == "localhost"
-            ? `http://localhost:9000`
-            : "https://thebreadimg.herokuapp.com") + `/static${img}`}");
-          background-size: cover;
-          background-position: center;
-          border-radius: 10px;
-          height: ${width}px;
-          width: ${width}px;
-        }
-
-        .product__btn {
+        .pack__btn {
           background: linear-gradient(90deg, ${colors.vino}, ${colors.naranja});
           cursor: pointer;
           font-size: 1rem;
           border: none;
           border-radius: 10px;
           margin-top: 0.75rem;
-          width: ${width}px;
+          width: 150px;
           padding: 2px;
           height: 30px;
         }
 
-        .product__btn > span {
+        .pack__btn > span {
           background: #f3f3f3;
           border-radius: 8px;
           display: inline-block;
@@ -165,20 +133,21 @@ export default function Product({ id, nombre, name, price, img, newAmount }) {
           height: 100%;
         }
 
-        .product__btn:hover > span {
+        .pack__btn:hover > span {
           background: #fff0;
           color: #fff;
         }
 
-        .product__btn__amount {
+        .pack__btn__amount {
           align-items: center;
-          width: ${width}px;
+          width: 150px;
           display: flex;
           justify-content: space-between;
           margin-top: 0.75rem;
+          margin: auto;
         }
 
-        .product__btn__amount > button {
+        .pack__btn__amount > button {
           background: linear-gradient(90deg, ${colors.vino}, ${colors.naranja});
           border-radius: 10px;
           border: none;
@@ -188,7 +157,7 @@ export default function Product({ id, nombre, name, price, img, newAmount }) {
           width: 30px;
         }
 
-        .product__btn__amount > button > span {
+        .pack__btn__amount > button > span {
           background: #f3f3f3;
           border-radius: 8px;
           display: inline-block;
@@ -200,7 +169,7 @@ export default function Product({ id, nombre, name, price, img, newAmount }) {
           height: 100%;
         }
 
-        .product__btn__amount > button:hover > span {
+        .pack__btn__amount > button:hover > span {
           background: #fff0;
           color: #fff;
         }
