@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useRouter } from "next/router";
 
 import Link from "next/link";
@@ -27,6 +27,26 @@ export default function Nav() {
   const openLanguage = () => {
     setLanguage(language ? false : true);
   };
+
+  const user = () => {
+    router.push("/user/singin");
+  };
+
+  useEffect(() => {
+    if (cartProducts != null && cartPacks != null) {
+      const animation = document.querySelector(".nav__cart__notification");
+
+      if (
+        cartProducts[0] !== null &&
+        cartPacks[0] !== null &&
+        cartProducts.length + cartPacks.length > 0
+      ) {
+        animation.classList.add("nav__cart__notification--animation");
+      } else {
+        animation.classList.remove("nav__cart__notification--animation");
+      }
+    }
+  }, [cartProducts, cartPacks]);
 
   return (
     <div className="nav__container">
@@ -114,6 +134,7 @@ export default function Nav() {
               className="nav__btn nav__cart nav__btn--change"
               onClick={() => openCart()}
             >
+              <div className="nav__cart__notification"></div>
               <Image src="/cart-icon-1.png" height="25px" width="25px" />
               <span className="nav__btn--change--top">
                 <Image src="/cart-icon-2.png" height="25px" width="25px" />
@@ -125,18 +146,13 @@ export default function Nav() {
               </span>
             </span>
 
-            <span className="nav__btn nav__user nav__btn--change">
+            <span
+              className="nav__btn nav__user nav__btn--change"
+              onClick={() => user()}
+            >
               <Image src="/profile-icon-1.png" height="25px" width="25px" />
               <span className="nav__btn--change--top">
-                <Link href="/user">
-                  <a>
-                    <Image
-                      src="/profile-icon-2.png"
-                      height="25px"
-                      width="25px"
-                    />
-                  </a>
-                </Link>
+                <Image src="/profile-icon-2.png" height="25px" width="25px" />
               </span>
             </span>
 
@@ -254,6 +270,38 @@ export default function Nav() {
 
         .nav__cart {
           grid-area: cart;
+        }
+
+        .nav__cart__notification {
+          background: ${colors.naranja};
+          border-radius: 100px;
+          height: 0;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          top: 50%;
+          position: absolute;
+          width: 0;
+        }
+
+        .nav__cart__notification--animation {
+          animation-duration: 2s;
+          animation-iteration-count: 3;
+          animation-name: notification;
+          animation-timing-function: cubic-bezier(0.1, 0.4, 0.05);
+        }
+
+        @keyframes notification {
+          0% {
+            background: ${colors.naranja};
+            height: 0;
+            width: 0;
+          }
+
+          100% {
+            background: ${colors.naranja}00;
+            height: 85px;
+            width: 85px;
+          }
         }
 
         .nav__btn--change--top {

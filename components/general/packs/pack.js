@@ -81,7 +81,6 @@ export default function Pack({
     }
     setTimeout(() => {
       setCartPacks(newCart);
-      console.log(newCart);
     }, 200);
   };
 

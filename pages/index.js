@@ -84,6 +84,7 @@ export default function Home() {
           background-size: 70% 90%;
           background-position: right;
           background-repeat: no-repeat;
+          width: 100vw;
         }
       `}</style>
     </>

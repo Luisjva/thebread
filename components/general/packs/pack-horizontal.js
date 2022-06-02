@@ -50,7 +50,7 @@ export default function PackHorizontal({ id, nombre, name, price, newAmount }) {
     }
 
     if (newAmount != 0) {
-      newCart.push({ id, name, nombre, img, price, newAmount });
+      newCart.push({ id, title: name, titulo: nombre, price, newAmount });
       setAmountCart(newAmount);
     } else {
       setAmountCart(0);
@@ -68,7 +68,7 @@ export default function PackHorizontal({ id, nombre, name, price, newAmount }) {
         </h3>
         <Price fontSize={1.1} value={price} />
         <div className="pack__btn__container">
-          {amountCart ? (
+          {amountCart && (
             <div className="pack__btn__amount">
               <button onClick={() => addCart("-")}>
                 <span>-</span>
@@ -78,10 +78,6 @@ export default function PackHorizontal({ id, nombre, name, price, newAmount }) {
                 <span>+</span>
               </button>
             </div>
-          ) : (
-            <button className="pack__btn" onClick={() => addCart("+")}>
-              <span>Agregar al carrito</span>
-            </button>
           )}
         </div>
       </div>

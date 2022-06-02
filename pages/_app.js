@@ -88,7 +88,7 @@ function MyApp({ Component, pageProps }) {
   }, [cartPacks]);
 
   return (
-    <>
+    <div className="container__all">
       <ProductsContext.Provider value={{ products, setProducts }}>
         <PackagesContext.Provider value={{ packages, setPackages }}>
           <CartContext.Provider
@@ -98,10 +98,18 @@ function MyApp({ Component, pageProps }) {
             <main>
               <Component {...pageProps} />
             </main>
+            <footer>Footer</footer>
           </CartContext.Provider>
         </PackagesContext.Provider>
       </ProductsContext.Provider>
-    </>
+      <style jsx>{`
+        .container__all {
+          display: grid;
+          grid-template-rows: 3rem 1fr auto;
+          min-height: 100vh;
+        }
+      `}</style>
+    </div>
   );
 }
 
